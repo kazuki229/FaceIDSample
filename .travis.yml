@@ -2,3 +2,5 @@ language: objective-c
 osx_image: xcode9.2
 xcode_project: FaceIDSample.xcodeproj
 xcode_scheme: FaceIDSample
+script:
+    - xcodebuild test -project FaceIDSample.xcodeproj -scheme FaceIDSample -destination 'platform=iOS Simulator,name=iPhone X,OS=11.2'
