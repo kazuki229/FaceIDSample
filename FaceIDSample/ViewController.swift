@@ -27,35 +27,35 @@ class ViewController: UIViewController {
                 return
             }
             
-            var message: String!
+            var message = ""
     
             switch error!.code {
-                case LAError.passcodeNotSet.rawValue:
-                    message = "Passcode is not set."
-                case LAError.biometryLockout.rawValue:
-                    message = "Biometry is locked out."
-                case LAError.biometryNotAvailable.rawValue:
-                    message = "Biometry is not available."
-                case LAError.biometryNotEnrolled.rawValue:
-                    message = "Biometry is not enrolled."
-                default:
+            case LAError.passcodeNotSet.rawValue:
+                message = "Passcode is not set."
+            case LAError.biometryLockout.rawValue:
+                message = "Biometry is locked out."
+            case LAError.biometryNotAvailable.rawValue:
+                message = "Biometry is not available."
+            case LAError.biometryNotEnrolled.rawValue:
+                message = "Biometry is not enrolled."
+            default:
                 message = "unexpected"
             }
             
             // LABiometryType can be used from iOS 11.0.1
             if #available(iOS 11.0.1, *) {
-                message = message + "\nThis device can use " + getBiometryText()
+                message += "\nThis device can use " + getBiometryText()
             }
             
             let alert = UIAlertController(title: "error", message: message, preferredStyle: .alert)
-            let action = UIAlertAction(title: "ok", style: .default, handler:nil)
+            let action = UIAlertAction(title: "ok", style: .default, handler: nil)
             alert.addAction(action)
             show(alert, sender: nil)
             return
         }
         
         let alert = UIAlertController(title: "Success", message: "This device can use " + getBiometryText(), preferredStyle: .alert)
-        let action = UIAlertAction(title: "ok", style: .default, handler:nil)
+        let action = UIAlertAction(title: "ok", style: .default, handler: nil)
         alert.addAction(action)
         show(alert, sender: nil)
     }
@@ -133,4 +133,3 @@ class ViewController: UIViewController {
         }
     }
 }
-
