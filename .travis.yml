@@ -5,7 +5,8 @@ xcode_scheme: FaceIDSample
 env:
     matrix:
         - OS=11.2 NAME='iPhone X'
-        - OS=11.0 NAME='iPhone X'
+        - OS=11.1 NAME='iPhone X'
+        - OS=11.0.1 NAME='iPhone X'
 script:
     - xcodebuild -project FaceIDSample.xcodeproj -scheme FaceIDSample -destination "platform=iOS Simulator,OS=$OS,name=$NAME" build test
 notifications:
