@@ -7,7 +7,7 @@ env:
         - OS=11.2 NAME='iPhone X'
         - OS=11.0 NAME='iPhone X'
 script:
-    - xcodebuild -project FaceIDSample.xcodeproj -scheme FaceIDSample -destination 'platform=iOS Simulator,OS=$OS,name=$NAME' build test
+    - xcodebuild -project FaceIDSample.xcodeproj -scheme FaceIDSample -destination "platform=iOS Simulator,OS=$OS,name=$NAME" build test
 notifications:
   slack:
     secure: UfEanEp+hZH5lsalretPH8rH1HVrluF2s63J2YzkUKGFmlSMu0+5MQv8eBrtru/rs8pGALb3K+9YryMFC3NtjfbHf1VgmQ14lfAX0Y0/R4BEfKZUkpbpbFoSvSHsDPLHyl44XqxZ8OwJ8GoSA/E1bBvZNn5kXiG/sihybh1fnn2TySyFknHGJov4SExNd2LEELuB2R5l3U/uw8nB4BgAA5as4o5nKhaorlSH6Vc8GxXzsmd2yNqhNMDaUkQrazygB5B9+tXJbgLS0hheJqxPkTk5LBg7a07PXUVvJpdLDEujvTYDzDxTqr1PTzc4E4UWMAJNY+mEF2W3s3Svu20cpt0JQ3jI4OfK/IllKRgZho8i2AWWUy+bUWtP4Ek9jy70r6RMIAPxvT2s18Ek2/V1STu66gJkjiFZbsXP6DUCj2IM6akieFOK4HuBAV6uNR5KAjvA9rX6+E5yrULNsLk5gmvCv9fnyZ4fMvHiRy1NA2rAWQOaazwFNf7+/M3CYPxE0gn2Y+Ed+0IzYpQXPSVW8wXkUtjtelSeVu7k1KwDE8SmPIPHvAZxneBOvsLzyQINUR/vyvhNe7T3/+33ncBNCaSq+5BAScbmNtQBqKkmpkE85UxOlFyNB+L6b24WYlJLVXeg9zYumaOTWtlxYzHK8UZMThhvsSWStpvrPH/LqK4=
