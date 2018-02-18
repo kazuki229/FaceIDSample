@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,41 +19,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6eQ-26-KLl">
-                                <rect key="frame" x="20" y="308.5" width="335" height="50"/>
-                                <color key="backgroundColor" red="0.78823529410000004" green="0.2274509804" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Bjb-oX-5hz"/>
-                                </constraints>
-                                <state key="normal" title="canEvaluatePolicy">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="canEvaluatePolicy:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lWh-sp-TJ8"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xn0-eP-nJx">
-                                <rect key="frame" x="20" y="388.5" width="335" height="50"/>
-                                <color key="backgroundColor" red="0.0" green="0.4549019608" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="LFY-cK-8yq"/>
-                                </constraints>
-                                <state key="normal" title="evaluatePolicy">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="evaluatePolicy:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MO5-rF-1J6"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ciu-SC-7ti">
+                                <rect key="frame" x="20" y="333.5" width="335" height="333.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6eQ-26-KLl">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="76"/>
+                                        <color key="backgroundColor" red="0.78823529410000004" green="0.2274509804" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="canEvaluatePolicy">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="canEvaluatePolicy:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lWh-sp-TJ8"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xn0-eP-nJx">
+                                        <rect key="frame" x="0.0" y="86" width="335" height="76"/>
+                                        <color key="backgroundColor" red="0.0" green="0.4549019608" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="evaluatePolicy">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="evaluatePolicy:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MO5-rF-1J6"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7NR-Ab-8bM">
+                                        <rect key="frame" x="0.0" y="172" width="335" height="75.5"/>
+                                        <color key="backgroundColor" red="0.62745098040000002" green="0.76078431369999999" blue="0.21960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="evaluatePolicy appCancel">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLA-OR-MwJ">
+                                        <rect key="frame" x="0.0" y="257.5" width="335" height="76"/>
+                                        <color key="backgroundColor" red="0.87058823529999996" green="0.58823529409999997" blue="0.062745098040000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="evaluatePolicy invalidContext">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6eQ-26-KLl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="0hW-AR-syV"/>
-                            <constraint firstItem="xn0-eP-nJx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="7eJ-Qu-jPl"/>
-                            <constraint firstItem="6eQ-26-KLl" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Dpf-fk-HXe"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xn0-eP-nJx" secondAttribute="trailing" constant="20" id="KFs-cu-h4F"/>
-                            <constraint firstItem="xn0-eP-nJx" firstAttribute="top" secondItem="6eQ-26-KLl" secondAttribute="bottom" constant="30" id="UaD-LW-T5U"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6eQ-26-KLl" secondAttribute="trailing" constant="20" id="aPd-Bf-rkg"/>
+                            <constraint firstItem="Ciu-SC-7ti" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="4gT-Xu-jy1"/>
+                            <constraint firstItem="Ciu-SC-7ti" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="S1q-IA-w2r"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ciu-SC-7ti" secondAttribute="bottom" id="dg9-Xj-Abg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ciu-SC-7ti" secondAttribute="trailing" constant="20" id="tVM-Rj-Pee"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

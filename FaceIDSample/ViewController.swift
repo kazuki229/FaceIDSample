@@ -22,29 +22,17 @@ class ViewController: UIViewController {
     
     @IBAction func canEvaluatePolicy(_ sender: UIButton) {
         var error: NSError?
+        let context = LAContext()
         if !self.context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
             if error == nil {
                 return
             }
             
             var message = ""
-    
-            switch error!.code {
-            case LAError.passcodeNotSet.rawValue:
-                message = "Passcode is not set."
-            case LAError.biometryLockout.rawValue:
-                message = "Biometry is locked out."
-            case LAError.biometryNotAvailable.rawValue:
-                message = "Biometry is not available."
-            case LAError.biometryNotEnrolled.rawValue:
-                message = "Biometry is not enrolled."
-            default:
-                message = "unexpected"
-            }
-            
+
             // LABiometryType can be used from iOS 11.0.1
             if #available(iOS 11.0.1, *) {
-                message += "\nThis device can use " + getBiometryText()
+                message += "\nThis device can use " + self.getBiometryTypeText(biometryType: context.biometryType)
             }
             
             let alert = UIAlertController(title: "error", message: message, preferredStyle: .alert)
@@ -53,8 +41,11 @@ class ViewController: UIViewController {
             show(alert, sender: nil)
             return
         }
-        
-        let alert = UIAlertController(title: "Success", message: "This device can use " + getBiometryText(), preferredStyle: .alert)
+        var message = ""
+        if #available(iOS 11.0.1, *) {
+            message = self.getBiometryTypeText(biometryType: context.biometryType)
+        }
+        let alert = UIAlertController(title: "Success", message: "This device can use " + message, preferredStyle: .alert)
         let action = UIAlertAction(title: "ok", style: .default, handler: nil)
         alert.addAction(action)
         show(alert, sender: nil)
@@ -62,32 +53,6 @@ class ViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    func getBiometryText() -> String {
-        // LABiometryType.none can be used from iOS 11.2
-        if #available(iOS 11.2, *) {
-            switch self.context.biometryType {
-            case .faceID:
-                return "Face ID"
-            case .touchID:
-                return "Touch ID"
-            case .none:
-                return "None"
-            }
-        }
-        
-        // LABiometryType.LABiometryNone is Deprecated iOS11.0.1-11.1
-        switch self.context.biometryType {
-        case .faceID:
-            return "Face ID"
-        case .touchID:
-            return "Touch ID"
-        case .LABiometryNone:
-            return "None"
-        default:
-            return "Unexpected"
-        }
     }
     
     @IBAction func evaluatePolicy(_ sender: UIButton) {
@@ -102,34 +67,84 @@ class ViewController: UIViewController {
                     return
                 }
                 
-                let description: String!
-                switch (error! as NSError).code {
-                case LAError.appCancel.rawValue:
-                    description = "app is canceled"
-                case LAError.authenticationFailed.rawValue:
-                    description = "authentication is failed"
-                case LAError.invalidContext.rawValue:
-                    description = "invalid context"
-                case LAError.notInteractive.rawValue:
-                    description = "not interactive"
-                case LAError.passcodeNotSet.rawValue:
-                    description = "passcode is not set"
-                case LAError.systemCancel.rawValue:
-                    description = "system cancel"
-                case LAError.userCancel.rawValue:
-                    description = "user cancel"
-                case LAError.userFallback.rawValue:
-                    description = "user fallback"
-                case LAError.biometryNotAvailable.rawValue:
-                    description = "biometry is not available"
-                default:
-                    description = "unexpected"
-                }
-                let alert = UIAlertController(title: "Error", message: description, preferredStyle: .alert)
+                let nserror = (error as Any) as! NSError
+                let alert = UIAlertController(title: "Error", message: self.getLAErrorText(code: LAError.Code(rawValue: nserror.code)!), preferredStyle: .alert)
                 let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alert.addAction(action)
                 self.show(alert, sender: nil)
             })
         }
+    }
+    
+    @available(iOS 11.0, *)
+    func getBiometryTypeText(biometryType: LABiometryType) -> String {
+        // LABiometryType.none can be used from iOS 11.2
+        if #available(iOS 11.2, *) {
+            switch biometryType {
+            case .faceID:
+                return "Face ID"
+            case .touchID:
+                return "Touch ID"
+            case .none:
+                return "None"
+            }
+        }
+        
+        // LABiometryType.LABiometryNone is Deprecated iOS11.0.1-11.1
+        switch biometryType {
+        case .faceID:
+            return "Face ID"
+        case .touchID:
+            return "Touch ID"
+        case .LABiometryNone:
+            return "None"
+        default:
+            return "Unexpected"
+        }
+    }
+    
+    func getLAErrorText(code: LAError.Code) -> String {
+        var message = "unexpected"
+        switch code {
+        case .authenticationFailed:
+            message = "authenticationFailed"
+        case .appCancel:
+            message = "appCancel"
+        case .invalidContext:
+            message = "invalidContext"
+        case .notInteractive:
+            message = "notInteractive"
+        case .passcodeNotSet:
+            message = "passcodeNotSet"
+        case .systemCancel:
+            message = "systemCancel"
+        case .userCancel:
+            message = "userCancel"
+        case .userFallback:
+            message = "userFallback"
+        case .touchIDLockout:
+            message = "touchIDLockout"
+        case .touchIDNotEnrolled:
+            message = "touchIDNotEnrolled"
+        case .touchIDNotAvailable:
+            message = "touchIDNotAvailable"
+        default:
+            break
+        }
+        
+        if #available(iOS 11.0.0, *) {
+            switch code {
+            case .biometryLockout:
+                message = "biometryLockout"
+            case .biometryNotEnrolled:
+                message = "biometryNotEnrolled"
+            case .biometryNotAvailable:
+                message = "biometryNotAvailable"
+            default:
+                break
+            }
+        }
+        
+        return message
     }
 }
