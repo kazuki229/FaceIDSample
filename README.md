@@ -6,4 +6,5 @@
 <p align="center">
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
 <a href="https://travis-ci.org/kazuki229/FaceIDSample"><img src="https://travis-ci.org/kazuki229/FaceIDSample.svg?branch=master"></a>
+<a href="https://codecov.io/gh/kazuki229/FaceIDSample"><img src="https://codecov.io/gh/kazuki229/FaceIDSample/branch/master/graph/badge.svg" /></a>
 </p>
