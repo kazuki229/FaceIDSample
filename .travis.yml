@@ -7,6 +7,7 @@ env:
         - OS=11.2 NAME='iPhone X'
         - OS=11.1 NAME='iPhone X'
         - OS=11.0.1 NAME='iPhone X'
+        - OS=10.3.1 NAME='iPhone 7'
 script:
     - xcodebuild -project FaceIDSample.xcodeproj -scheme FaceIDSample -destination "platform=iOS Simulator,OS=$OS,name=$NAME" build test
 notifications:
