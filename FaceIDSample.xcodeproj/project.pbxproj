@@ -14,6 +14,7 @@
 		2D040D7320387B18005F1A49 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D040D7120387B18005F1A49 /* LaunchScreen.storyboard */; };
 		2D040D7E20387B18005F1A49 /* FaceIDSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D040D7D20387B18005F1A49 /* FaceIDSampleTests.swift */; };
 		2D040D8920387B18005F1A49 /* FaceIDSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D040D8820387B18005F1A49 /* FaceIDSampleUITests.swift */; };
+		2D040D982038934B005F1A49 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D040D972038934B005F1A49 /* LocalAuthentication.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		2D040D8420387B18005F1A49 /* FaceIDSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FaceIDSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D040D8820387B18005F1A49 /* FaceIDSampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDSampleUITests.swift; sourceTree = "<group>"; };
 		2D040D8A20387B18005F1A49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D040D972038934B005F1A49 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D040D982038934B005F1A49 /* LocalAuthentication.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +84,7 @@
 				2D040D7C20387B18005F1A49 /* FaceIDSampleTests */,
 				2D040D8720387B18005F1A49 /* FaceIDSampleUITests */,
 				2D040D6620387B18005F1A49 /* Products */,
+				2D040D962038934B005F1A49 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,6 +127,14 @@
 				2D040D8A20387B18005F1A49 /* Info.plist */,
 			);
 			path = FaceIDSampleUITests;
+			sourceTree = "<group>";
+		};
+		2D040D962038934B005F1A49 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2D040D972038934B005F1A49 /* LocalAuthentication.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -363,7 +375,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -414,7 +426,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -429,6 +441,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2KULV68KM4;
 				INFOPLIST_FILE = FaceIDSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.kazuki229.FaceIDSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -444,6 +457,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2KULV68KM4;
 				INFOPLIST_FILE = FaceIDSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.kazuki229.FaceIDSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
